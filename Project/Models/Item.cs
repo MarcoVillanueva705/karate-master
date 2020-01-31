@@ -5,7 +5,13 @@ namespace ConsoleAdventure.Project.Models
 {
     public class Item : IItem
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string ItemName { get; set; }
+        public string ItemDescription { get; set; }
+
+        public Item(string itemName, string itemDescription)
+        {
+            ItemName = itemName;
+            ItemDescription = itemDescription;
+        }
     }
 }

@@ -4,7 +4,7 @@ namespace ConsoleAdventure.Project.Interfaces
 {
     public interface IItem
     {
-        string Name { get; set; }
-        string Description { get; set; }
+        string ItemName { get; set; }
+        string ItemDescription { get; set; }
     }
 }

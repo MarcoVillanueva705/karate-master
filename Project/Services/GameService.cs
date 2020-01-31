@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ConsoleAdventure.Project.Interfaces;
 using ConsoleAdventure.Project.Models;
@@ -14,13 +15,21 @@ namespace ConsoleAdventure.Project
             _game = new Game();
             Messages = new List<string>();
         }
+        public void StartGame()
+        {
+            Messages.Add(new string("$Welcome to the 4 Chambers!"));
+        }
         public void Go(string direction)
         {
-            throw new System.NotImplementedException();
+            if (_game.CurrentRoom.Exits.ContainsKey(direction))
+            {
+                Console.Clear();
+                _game.CurrentRoom = _game.CurrentRoom.Exits[direction];
+            }
         }
         public void Help()
         {
-            throw new System.NotImplementedException();
+            Messages.Add(new string("To start the game, type START in the console. "));
         }
 
         public void Inventory()
