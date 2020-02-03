@@ -6,6 +6,7 @@ namespace ConsoleAdventure.Project.Interfaces
     {
         IRoom CurrentRoom { get; set; }
         IPlayer CurrentPlayer { get; set; }
+        IItem CurrentItem { get; set; }
 
         void Setup();
     }

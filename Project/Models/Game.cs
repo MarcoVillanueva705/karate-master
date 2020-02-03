@@ -7,6 +7,7 @@ namespace ConsoleAdventure.Project.Models
     {
         public IRoom CurrentRoom { get; set; }
         public IPlayer CurrentPlayer { get; set; }
+        public IItem CurrentItem { get; set; }
 
         //NOTE Make yo rooms here...
         public void Setup()
@@ -23,7 +24,6 @@ namespace ConsoleAdventure.Project.Models
         Boss.AddExit(Top);
 
         //Add items to rooms
-
         Crane.Items.Add(new Item("Nunchucks", "Use these to defeat the Boss!" ));
 
         CurrentRoom = Monkey;

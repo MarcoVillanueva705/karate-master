@@ -34,11 +34,12 @@ namespace ConsoleAdventure.Project.Controllers
             //NOTE this will take the user input and parse it into a command and option.
             //IE: take silver key => command = "take" option = "silver key"
             Console.Clear();
-            switch(input)
+            switch(command)
             {
             case "Q":
-            case "QUIT":
-            case "EXIT":
+            // case "QUIT":
+            // case "EXIT":
+            case "LEAVE":
             _walking = false;
             break;
             case "HELP":

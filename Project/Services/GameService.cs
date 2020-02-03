@@ -17,7 +17,7 @@ namespace ConsoleAdventure.Project
         }
         public void StartGame()
         {
-            Messages.Add(new string("$Welcome to the 4 Chambers!"));
+            Messages.Add("Welcome to the 4 Chambers!");
         }
         public void Go(string direction)
         {
@@ -29,13 +29,19 @@ namespace ConsoleAdventure.Project
         }
         public void Help()
         {
-            Messages.Add(new string("To start the game, type START in the console. "));
+            Messages.Add("To start the game, type START in the console. ");
+            var input = Console.ReadLine().ToUpper();
+            Console.Clear();
         }
 
         public void Inventory()
         {
-            throw new System.NotImplementedException();
-        }
+        Item nunchucks = new Item("Nunchucks", "Use these to defeat the Boss!");
+        Messages.Add("------INVENTORY-------");
+        Messages.Add($"{nunchucks.ItemName}"); 
+        Messages.Add("press any key to return");
+
+        }  
 
         public void Look()
         {
