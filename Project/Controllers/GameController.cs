@@ -49,6 +49,13 @@ namespace ConsoleAdventure.Project.Controllers
             Console.Clear();
             _gameService.StartGame();
             break;
+            case "GO":
+            _gameService.Go(option);            
+            PrintMessages();
+            Console.ReadKey();
+            Console.Clear();
+            _gameService.StartGame();
+            break;
             case "INVENTORY":
             _gameService.Inventory();            
             PrintMessages();

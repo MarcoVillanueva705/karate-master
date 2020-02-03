@@ -25,6 +25,8 @@ namespace ConsoleAdventure.Project
             {
                 Console.Clear();
                 _game.CurrentRoom = _game.CurrentRoom.Exits[direction];
+                Messages.Add($"You are now in the{_game.CurrentRoom.Description}");
+
             }
         }
         public void Help()
