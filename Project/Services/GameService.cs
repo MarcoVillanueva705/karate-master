@@ -27,6 +27,7 @@ namespace ConsoleAdventure.Project
                 Console.Clear();
                 _game.CurrentRoom = _game.CurrentRoom.Exits[direction];
                 Messages.Add($"You are now in the {_game.CurrentRoom.Name}: {_game.CurrentRoom.Description}");
+                Messages.Add($"Press any key to continue.");
 
                 //FIXME itterate over CurrentRoom.Items and print each item//DONE
                 foreach (Item i in _game.CurrentRoom.Items)
@@ -34,11 +35,20 @@ namespace ConsoleAdventure.Project
                 Messages.Add($"{i.ItemName}");
             }
             }
+            else{
             //NOTE add message for invalid directoin
+            Messages.Add($"Invalid direction!  Press any key to continue.");
+            }
         }
         public void Help()
         {
-            Messages.Add("To start the game, type START in the console. ");
+            Messages.Add("Welcome to Karate Master!  To quit a game, type in 'Q'.");
+            Messages.Add("You must enter the name of the chamber in order to proceed to that chamber. ");
+            Messages.Add("For example, typing in 'go monkey' in the console will take you to the MONKEY room. ");
+            Messages.Add("Only one chamber has weapons you can grab.  Type in either 'grab nunchucks' or 'grab katana' in a chamber of your choosing. ");
+            Messages.Add("When confronted with the Boss of the game, type in 'fight' followed by the name of the weapon in your inventory.");
+            Messages.Add("Press any key to go back to the main menu...");
+            Messages.Add("Good Luck!");
             Console.Clear();
         }
 
@@ -63,6 +73,7 @@ namespace ConsoleAdventure.Project
             {
                 Messages.Add($"{i.ItemName}");
             }
+            Messages.Add($"Press any key to continue.");
         }
         ///<summary>
         ///Restarts the game 
@@ -107,7 +118,7 @@ namespace ConsoleAdventure.Project
         {
             //FIXME Similar to take item, item will need to be found in the Player Inventory
             //Conditional on CurrentRoom.Name && item.Name
-            // var item = _game.CurrentRoom.Items.Find(i=> i.ItemName.ToUpper() == itemName);
+            // var item = _game.CurrentRoom.Items.Find(i=> i.ItemName.ToUpper() == itemName);//DONE
             var item = _game.CurrentPlayer.Inventory.Find(i => i.ItemName.ToUpper() == itemName);
             if (item == null)
             {
@@ -117,10 +128,12 @@ namespace ConsoleAdventure.Project
             {
                 //WIN
                 Messages.Add($"You are the master!");
+                Messages.Add($"Press any key to continue");
                 GameOver = true;
             }else{
                 //LOSE
                 Messages.Add($"Ouch!  Boss Wins...");
+                Messages.Add($"Press any key to continue");
                 GameOver = true;
             }
         }
