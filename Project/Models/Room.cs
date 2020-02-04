@@ -18,7 +18,7 @@ namespace ConsoleAdventure.Project.Models
 
     public Room(string name, string description)
     {
-        Name = name;
+        Name = name.ToUpper();
         Description = description;
         Exits = new Dictionary<string, IRoom>();
         Items = new List<Item>();

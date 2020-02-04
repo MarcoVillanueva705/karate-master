@@ -15,7 +15,7 @@ namespace ConsoleAdventure.Project.Controllers
         public void Run()
         {
             _gameService.StartGame();
-            while (_walking)
+            while (_walking && !_gameService.GameOver)
             {
                PrintMessages();
                GetUserInput(); 
@@ -28,7 +28,7 @@ namespace ConsoleAdventure.Project.Controllers
         public void GetUserInput()
         {
             Console.WriteLine("What would you like to do?");
-            string input = Console.ReadLine().ToLower() + " ";
+            string input = Console.ReadLine().ToUpper() + " ";
             string command = input.Substring(0, input.IndexOf(" "));
             string option = input.Substring(input.IndexOf(" ") + 1).Trim();
             //NOTE this will take the user input and parse it into a command and option.
@@ -78,14 +78,14 @@ namespace ConsoleAdventure.Project.Controllers
             _gameService.StartGame();
             break;
             case "GRAB":
-            _gameService.TakeItem("");            
+            _gameService.TakeItem(option);            
             PrintMessages();
             Console.ReadKey();
             Console.Clear();
             _gameService.StartGame();
             break;
             case "FIGHT":
-            _gameService.UseItem("");            
+            _gameService.UseItem(option);            
             PrintMessages();
             Console.ReadKey();
             Console.Clear();
