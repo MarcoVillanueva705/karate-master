@@ -36,7 +36,7 @@ namespace ConsoleAdventure.Project
             }
             }
             else{
-            //NOTE add message for invalid directoin
+            //NOTE add message for invalid directoin DONE
             Messages.Add($"Invalid direction!  Press any key to continue.");
             }
         }
@@ -57,11 +57,19 @@ namespace ConsoleAdventure.Project
         Item nunchucks = new Item("Nunchucks", "Use these to defeat the Boss!");
         Item katana = new Item("Katana", "Slice and Dice!");
         Messages.Add("------INVENTORY-------");
-        Messages.Add($"{nunchucks.ItemName}"); 
-        Messages.Add($"{katana.ItemName}"); 
-        Messages.Add("press any key to return");
+        if(_game.CurrentPlayer.Inventory.Count > 0)
+        {
+        foreach(var item in _game.CurrentPlayer.Inventory)
+        {
+            Messages.Add($"{item.ItemName} - {item.ItemDescription}");
+        }
+            Messages.Add($"Press any key to return");
+        }else{
+            Messages.Add($"You have nothing in your inventory.");
+            Messages.Add($"Press any key to return");
 
-        }  
+        }
+        }
 
         public void Look()
         {
@@ -95,11 +103,12 @@ namespace ConsoleAdventure.Project
                 //var item = CurrentRoom.Find(i => i.Name.ToUpper() == itemName)
                 //If item == null => add message for error and return
                 //Else add to CurrentPlayer.Inventory
-                    //Remove from room (CurrentRoom.Items.Remove(item))
+                    //Remove from room (CurrentRoom.Items.Remove(item))DONE
             var item = _game.CurrentRoom.Items.Find(i=> i.ItemName.ToUpper() == itemName);
             if (item == null)
             {
                 Messages.Add($"This item does not exist");
+                Messages.Add($"Press any key to continue");
             }
             else
             {
